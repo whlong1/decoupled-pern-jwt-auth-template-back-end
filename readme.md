@@ -4,11 +4,11 @@
 ```
 npm i
 touch .env
+npx sequelize-cli db:migrate
 ```
 
 
 ## Quick reference
-
 
 Command to create a model (generates model and migration):
 ```
