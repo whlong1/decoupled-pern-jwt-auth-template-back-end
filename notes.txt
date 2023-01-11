@@ -1,0 +1,13 @@
+  name: String,
+  email: { type: String, required: true, lowercase: true },
+  password: String,
+  profile: { type: Schema.Types.ObjectId, ref: 'Profile' },
+
+
+npx sequelize-cli model:generate --name User --attributes name:string,email:string,password:string
+
+
+
+npx sequelize-cli model:generate --name Profile --attributes name:string,photo:string,user_id:integer
+
+

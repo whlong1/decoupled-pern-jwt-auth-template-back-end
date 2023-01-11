@@ -1,8 +1,28 @@
 # decoupled-pern-jwt-auth-template-back-end 
 
-This repository has an express app at many different states to model the setup for different situations. Explore the branches and checkout this readme to learn about each state.
+## Getting Started
+```
+npm i
+touch .env
+```
 
-## express-ejs-nodb Branch
+
+## Quick reference
+
+
+Command to create a model (generates model and migration):
+```
+npx sequelize-cli model:generate --name User --attributes name:string,email:string,password:string
+npx sequelize-cli model:generate --name Profile --attributes name:string,photo:string,user_id:integer
+```
+
+Command to run migrations (updates the database):
+```
+npx sequelize-cli db:migrate
+```
+
+
+## Alex Merced Writeup:
 
 This branch shows an express app that deliver a JSON API with CRUD functionality using a Postgres Database with the Sequelize ORM.
 

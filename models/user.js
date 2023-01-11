@@ -1,5 +1,3 @@
-
-
 'use strict';
 const {
   Model
@@ -13,14 +11,30 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+
+      User.hasOne(models.Profile, {
+        as: "profile", // <= The property on a user object where the profile is found.
+        foreignKey: 'user_id', // <= The foreign key that will be found on the profiles table
+        onUpdate: 'CASCADE', // <= When User is updated, related Profile will also be updated
+        onDelete: 'CASCADE', // <= When User is deleted, related Profile will also be deleted
+      })
+
+
     }
   }
   User.init({
-    username: DataTypes.STRING,
+    name: DataTypes.STRING,
+    email: DataTypes.STRING,
     password: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'User',
+    tableName: 'users' // <Specify tableName
   });
   return User;
 };
+
+// Note: After updating the tableName, remember to update the migration before running it.
+
+
+// hasOne
