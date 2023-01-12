@@ -1,13 +1,28 @@
-  name: String,
-  email: { type: String, required: true, lowercase: true },
-  password: String,
-  profile: { type: Schema.Types.ObjectId, ref: 'Profile' },
-
-
 npx sequelize-cli model:generate --name User --attributes name:string,email:string,password:string
-
-
-
 npx sequelize-cli model:generate --name Profile --attributes name:string,photo:string,user_id:integer
 
 
+npx sequelize-cli db:migrate
+npx sequelize-cli migration:generate --name add-userid-column
+
+Get writeup on handling seed files.
+
+
+
+References issue:
+https://github.com/sequelize/sequelize/issues/10588
+
+
+
+Fact checking old sei material:
+
+The docs claim association methods like hasOne will automatically create foreign key references with constraints.
+This is not the case when using the sequelize-cli. Columns for associations must be added to the model.
+
+Are static associate methods doing anything?
+  Fuck yea. For the join to successful when using 'includes' you must define the association (hasOne, belongsTo, etc)
+
+Can the cascade be left out of the static associate, and just included in model and migration?
+  Hell yes. In fact, it makes more sense to take care of it there.
+
+Test whether foreign key columns can be added with only the migration.

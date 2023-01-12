@@ -15,10 +15,12 @@ module.exports = (sequelize, DataTypes) => {
       User.hasOne(models.Profile, {
         as: "profile", // <= The property on a user object where the profile is found.
         foreignKey: 'user_id', // <= The foreign key that will be found on the profiles table
-        onUpdate: 'CASCADE', // <= When User is updated, related Profile will also be updated
-        onDelete: 'CASCADE', // <= When User is deleted, related Profile will also be deleted
-      })
 
+        
+        // You do not need to define cascades here, if the casade is defined in the column (see profile.user_id)
+        // onUpdate: 'CASCADE', 
+        // onDelete: 'CASCADE',
+      })
 
     }
   }
@@ -29,12 +31,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'User',
-    tableName: 'users' // <Specify tableName
+    tableName: 'users'
   });
   return User;
 };
-
-// Note: After updating the tableName, remember to update the migration before running it.
-
-
-// hasOne

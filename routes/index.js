@@ -32,15 +32,35 @@ router.get('/', async function (req, res) {
 
   //? =====================
   //! Association Check:
-  // const user = await User.findByPk(1, {
+  // const foundUser = await User.findByPk(1, {
   //   include: [{
   //     as: "profile",
   //     model: Profile,
   //   }]
   // })
 
-  // console.log('User Profile Data:', user.profile)
-  // res.json(user)
+  // console.log('User Profile Data:', foundUser.profile)
+
+  //? =====================
+  // //! Delete User & Cascade Check:
+  // Associated Profile row is removed in this scenario
+  // If cascade is not specified, error will be thrown when deleting parent
+  // const removedUserId = await User.destroy({
+  //   where: { id: 1 }
+  // })
+
+  // console.log(removedUserId)
+
+  //? =====================
+  // //! Delete Profile & NonCascade Check:
+  // Associated User row is NOT removed in this scenario
+  // const removedProfileId = await Profile.destroy({
+  //   where: { id: 1 }
+  // })
+
+  // console.log(removedProfileId)
+
+  res.send('OK')
 })
 
 module.exports = router

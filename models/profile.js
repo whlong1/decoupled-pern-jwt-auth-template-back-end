@@ -4,26 +4,36 @@ const {
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Profile extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
     static associate(models) {
-      // define association here
-      Profile.belongsTo(models.Profile, {
+      Profile.belongsTo(models.User, {
         foreignKey: 'user_id',
       })
     }
+
   }
   Profile.init({
     name: DataTypes.STRING,
     photo: DataTypes.STRING,
-    user_id: DataTypes.INTEGER
+
+    // For cascades to work, need to add references property to foreign key column.
+    // Without including this, the child is not deleted when parent row is removed.
+    // onDelete behavior is specified in child! When parent is deleted, child is removed
+    // foreign key field must be modified in model and migration.
+
+    user_id: {
+      type: DataTypes.INTEGER,
+      onDelete: 'CASCADE',
+      references: {
+        key: 'id',
+        model: 'users',
+      }
+    }
+
+
   }, {
     sequelize,
     modelName: 'Profile',
-    tableName: 'profiles'
+    tableName: 'profiles',
   });
   return Profile;
 };

@@ -21,8 +21,15 @@ Command to run migrations (updates the database):
 npx sequelize-cli db:migrate
 ```
 
+Command to create migrations:
+```
+npx sequelize-cli migration:generate --name name-of-migration
+```
+
 
 ## Alex Merced Writeup:
+
+[Original Repo](https://github.com/AlexMercedCoder/model-express-app/tree/api-postgres-auth)
 
 This branch shows an express app that deliver a JSON API with CRUD functionality using a Postgres Database with the Sequelize ORM.
 
