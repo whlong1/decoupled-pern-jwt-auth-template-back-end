@@ -15,6 +15,7 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING,
     photo: DataTypes.STRING,
 
+
     // For cascades to work, need to add references property to foreign key column.
     // Without including this, the child is not deleted when parent row is removed.
     // onDelete behavior is specified in child! When parent is deleted, child is removed

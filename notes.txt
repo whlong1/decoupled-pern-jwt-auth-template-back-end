@@ -26,3 +26,8 @@ Can the cascade be left out of the static associate, and just included in model 
   Hell yes. In fact, it makes more sense to take care of it there.
 
 Test whether foreign key columns can be added with only the migration.
+
+
+The approaches outlined in the Core Concepts section of the sequelize documentation assumes you are 
+using a sync({ force: true }) method to synchronize your models and tables. This approach to synchronization
+is not recommended for production apps. As a result, be 

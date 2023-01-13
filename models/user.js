@@ -4,6 +4,12 @@ const {
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
+
+    sayHello() {
+      return 'Helloy' + this.name
+    }
+    // user.sayHello()
+
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -15,11 +21,6 @@ module.exports = (sequelize, DataTypes) => {
       User.hasOne(models.Profile, {
         as: "profile", // <= The property on a user object where the profile is found.
         foreignKey: 'user_id', // <= The foreign key that will be found on the profiles table
-
-        
-        // You do not need to define cascades here, if the casade is defined in the column (see profile.user_id)
-        // onUpdate: 'CASCADE', 
-        // onDelete: 'CASCADE',
       })
 
     }

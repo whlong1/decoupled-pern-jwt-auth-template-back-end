@@ -32,14 +32,15 @@ router.get('/', async function (req, res) {
 
   //? =====================
   //! Association Check:
-  // const foundUser = await User.findByPk(1, {
-  //   include: [{
-  //     as: "profile",
-  //     model: Profile,
-  //   }]
-  // })
+  const foundUser = await User.findByPk(1, {
+    include: [{
+      as: "profile",
+      model: Profile,
+    }]
+  })
 
-  // console.log('User Profile Data:', foundUser.profile)
+
+  console.log('User Profile Data:', foundUser)
 
   //? =====================
   // //! Delete User & Cascade Check:
