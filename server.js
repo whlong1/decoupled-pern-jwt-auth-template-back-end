@@ -7,8 +7,8 @@ const morgan = require("morgan");
 const methodOverride = require("method-override");
 const cors = require("cors");
 
-const TodoRouter = require("./controllers/todo"); // import Todo object
-const UserRouter = require("./controllers/user"); // import User object
+// const TodoRouter = require("./controllers/todo"); // import Todo object
+// const UserRouter = require("./controllers/user"); // import User object
 
 const indexRouter = require('./routes/index')
 
@@ -41,8 +41,8 @@ app.use(express.json()); // parse JSON bodies
 
 app.use("/", indexRouter);
 
-app.use("/todo", TodoRouter);
-app.use("/user", UserRouter);
+// app.use("/todo", TodoRouter);
+// app.use("/user", UserRouter);
 
 //**************************
 // Register Routes

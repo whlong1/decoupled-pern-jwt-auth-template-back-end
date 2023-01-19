@@ -5,22 +5,17 @@ const {
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
 
+    // Example helper method:
     sayHello() {
       return 'Helloy' + this.name
     }
-    // user.sayHello()
 
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
     static associate(models) {
       // define association here
 
       User.hasOne(models.Profile, {
         as: "profile", // <= The property on a user object where the profile is found.
-        foreignKey: 'user_id', // <= The foreign key that will be found on the profiles table
+        foreignKey: 'userId', // <= The foreign key that will be found on the profiles table
       })
 
     }
@@ -32,7 +27,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'User',
-    tableName: 'users'
   });
   return User;
 };
+

@@ -13,7 +13,7 @@ npx sequelize-cli db:migrate
 Command to create a model (generates model and migration):
 ```
 npx sequelize-cli model:generate --name User --attributes name:string,email:string,password:string
-npx sequelize-cli model:generate --name Profile --attributes name:string,photo:string,user_id:integer
+npx sequelize-cli model:generate --name Profile --attributes name:string,photo:string,userId:integer
 ```
 
 Command to run migrations (updates the database):

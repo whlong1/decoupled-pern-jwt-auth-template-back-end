@@ -1,5 +1,4 @@
 'use strict';
-
 const fs = require('fs');
 const path = require('path');
 const Sequelize = require('sequelize');
@@ -36,3 +35,6 @@ db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
 module.exports = db;
+
+// Used to set up and configure the connection to the database using the Sequelize library.
+// Imports all the models and allows us to access them elsewhere in our application through the exported db object
